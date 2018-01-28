@@ -17,17 +17,14 @@ Keep Austin WEIRD Trivia Game was created to showcase the use of jQuery , JavaSc
 - Perfered viewing in English language :us:
 
 **HOW TO PLAY**:
-The game starts when the page is loaded. To start the game, the user will click on the start button
+To start the game, the user will click on the start button. There will be a series of 10 questions.
 
-There is a randomly generated number. There four buttons from value 1-12, which have numbers generated at the start of the game.
+For every question there is 5 seconds to answer a question. If the user clicks the correct answer, the user get a point for being correct and will move on to the next question. If the user clicks the wrong answer, the user gets a point for being incorrect and goes to the next question. If there is no response within the 5 seconds, the user will gain a point for not responding.
 
-The game will let the user push any of the 4 buttons to tabulate a user number.
+When all 10 questions are answered a review page will appear and asks if the user wants to play again.
 
-When the randomly generated number is equal to the user number,winner is displayed, the winner gets a win, the user adds the  generated number to the total score, and a new randomly generated number and the four buttons are reassigned to different values.
 
-When the user number is less than generated number, the user can continue with their number tabulation. The buttons and the generated number stays the same.
 
-When the user number is greater than the generated number, loser is displayed. The game will continue to right after the prompt to either restart or continue. The score resets back to 0, and a new randomly generated number and the four buttons are reassigned to different values.
 
 **BUILT WITH**:
 - Sublime Text
