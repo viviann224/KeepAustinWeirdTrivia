@@ -87,6 +87,17 @@ hr
 	width:90%;
 }
 
+.img
+{
+	width:40%;
+	text-align: center;
+	border-width: 7px;
+	border-style: double;
+	box-shadow: 2px 2px #828282;
+	
+	
+}
+
 #opt1, #opt2, #opt3,
 {
 	background-color: white;

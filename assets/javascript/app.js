@@ -5,31 +5,102 @@
 // and Trivia.display() method
 //Questions contains an array of questions, options, answers, and a display
 var Questions=[{
-	"question": "Where is the \"I LOVE YOU SO MUCH\" mural located?",
-	"option1": "Joe's Coffee",
+	"question": "What is this major player at the Austin Farmer's Market?",
+	"option1": "Jason's Backyard Garden",
 	"option2": "Home Slice",
 	"option3": "Whole Foods",
 	"answer": "1",
-	"display" :"Joe's Coffee"
+	"display" :"Jason's Backyard Garden",
+	"image": "assets/images/jasons.png"
 },
 {
-	"question": "What is Austin known for?",
-	"option1": "Apple City",
-	"option2": "Windy City",
-	"option3": "Music Capital",
+	"question": "Which one was one of the first vegetarian resturant?",
+	"option1": "Taco Deli",
+	"option2": "Franklin's",
+	"option3": "Mr. Natural",
 	"answer": "3",
-	"display" :"Music Capital"
+	"display" :"Mr. Natural",
+	"image": "assets/images/mrntl.png"
 },
 
 {
-	"question": "Lady Bird Lake is also known as?",
-	"option1": "Birdman Lake",
-	"option2": "Town Lake",
-	"option3": "Marathon Runner Lake",
+	"question": "Which Rodeo the largest Rodeo in Austin?",
+	"option1": "Houston Rodeo",
+	"option2": "Rodeo Austin",
+	"option3": "Texas State Fair",
 	"answer": "2",
-	"display" :"Town Lake"
+	"display" :"Rodeo Austin",
+	"image": "assets/images/rodeoaustin.png"
 },
 
+{
+	"question": "I am a new and up and coming area, I am so cool, the Thinkery decided to follow me?",
+	"option1": "The Drag",
+	"option2": "Muller Park",
+	"option3": "Arboredum",
+	"answer": "2",
+	"display" :"Muller Park",
+	"image": "assets/images/muller.png"
+},
+{
+	"question": "What bleeds burnt orange?",
+	"option1": "The University of Texas at Austin",
+	"option2": "Texas State",
+	"option3": "Baylor University",
+	"answer": "1",
+	"display" :"The University of Texas at Austin",
+	"image": "assets/images/ut.png"
+},
+
+{
+	"question": "If you are into the BBQ and food truck scene, LeRoy & Luis shares my space?",
+	"option1": "Joe's Coffee",
+	"option2": "The Infinite Monkey Theorem",
+	"option3": "Cosmic Coffee + Beer Garden",
+	"answer": "3",
+	"display" :"Cosmic Coffee + Beer Garden",
+	"image": "assets/images/cosmic.png"
+},
+
+{
+	"question": "It takes about 8 miles to complete the Hike in the Barton Creek area, who am I?",
+	"option1": "Town Lake",
+	"option2": "Wild Basin Wilderness Preserve",
+	"option3": "The Greenbelt",
+	"answer": "3",
+	"display" :"The Greenbelt",
+	"image": "assets/images/greenbelt.png"
+},
+
+{
+	"question": "You come for the Great view, the Tex-mex is average, I am a typical tourist trap?",
+	"option1": "The Oasis",
+	"option2": "Mozart's Roasters",
+	"option3": "The Trail of Lights",
+	"answer": "1",
+	"display" :"The Oasis",
+	"image": "assets/images/oasis.png"
+},
+
+{
+	"question": "Where do you go to see the bats in Austin?",
+	"option1": "Town Lake Austin",
+	"option2": "Domain Austin",
+	"option3": "Rainey Street",
+	"answer": "1",
+	"display" :"Town Lake Austin",
+	"image": "assets/images/townlake.png"
+},
+
+{
+	"question": "I might not be an Austin Original, but everyone loves my shoes (& maybe coffee), who am I?",
+	"option1": "Town Lake Austin",
+	"option2": "TOMS Roasting Co",
+	"option3": "LAZARUS BREWING",
+	"answer": "2",
+	"display" :"TOMS Roasting Co",
+	"image": "assets/images/toms.png"
+},
 
 ];
 //class trivia 
@@ -89,7 +160,7 @@ count: function()
 	//display the time
 	$("#time").text("Time left: "+(Trivia.time+1)+" sec");
 	//check if the user ran out of time
-	if(Trivia.time==0&& Trivia.x<Trivia.triviaq.length)
+	if(Trivia.time==0&& Trivia.x<Questions.length)
 	{
 		//if out of time, display message
 		$("#solution").html("You ran out of time!!");
@@ -119,6 +190,7 @@ count: function()
 	$("#time").empty();
 	$("#question").empty();
 	$("#buttons").hide();
+	$("#images").hide();
 	$("#start").append("<button class='click'>START</button>");
 
 	//click start button to begin
@@ -130,9 +202,9 @@ count: function()
 
 question: function()
 {
-	if(Trivia.x<Trivia.solution.length)
+	if(Trivia.x<Questions.length)
 	{
-
+		$("#images").hide();
 		$("#buttons").show();
 		var result;
 	$("#validate").empty();
@@ -172,7 +244,7 @@ display: function()
 	console.log(Trivia.unanswered);
 	//if the index is less than the length of the solution
 
-	if(Trivia.x<Trivia.solution.length)
+	if(Trivia.x<Questions.length)
 	{
 		//check if the user still has time
 		if(Trivia.time<=0)
@@ -192,11 +264,15 @@ display: function()
 
 	//display the solution
 	$("#answer").html("The ANSWER IS: "+Questions[Trivia.x].display);
+	
+	//console.log(Questions[Trivia.x].image);
+	$("#images").show();
+	$("#images").html("<img src='"+Questions[Trivia.x].image+"' class='img'>")
+	//show the solution for 2 seconds and go to the next question
 	//update the counter index
 	Trivia.x++;
-	//show the solution for 2 seconds and go to the next question
-	console.log("waiting 1 s then go to next q");
 	setTimeout(Trivia.question,  1000*2);
+	
 	console.log("waiting on 1s");
 	}
 	else
@@ -215,7 +291,8 @@ display: function()
 //display the game is over, shows the results, and has a button to restart the game 
 end: function() 
 {
-;
+
+$("#images").hide();
 	//clear the answer and solution
 	$("#answer").empty();
 	$("#solution").empty();
@@ -260,7 +337,7 @@ $("#validate").on("click", function()
 		
 		console.log("clicked start!");
 		//Trivia.isDone=false;
-		if(Trivia.x<Trivia.solution.length)
+		if(Trivia.x<Questions.length)
 		{
 			Trivia.question();
 		}
@@ -315,7 +392,7 @@ Trivia.start();
 //Trivia.question();
 
 
-console.log(typeof(Trivia.x));
+console.log("length: "+Questions.length);
 console.log(Questions[0].option1);
 console.log(Questions[0].option2);
 console.log(Questions[0].option3);
