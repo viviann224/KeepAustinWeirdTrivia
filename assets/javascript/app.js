@@ -184,17 +184,19 @@ count: function()
 //start function is the initial values
  start: function() 
  {
- 	console.log("start fx");
+ 	//index to 0
  	Trivia.x=0;
- 	console.log(Trivia.x);
+ 	//counters to 0
  	Trivia.correct=0;
 	Trivia.incorrect=0;
 	Trivia.unanswered=0;
+	//disable the interval
 	intervalId=0;
-	//clearInterval(intervalId);
+	//stop time
 	isNoTime=false;
+	//set to not done
 	Trivia.isDone=false;
-	//Trivia.timeout();
+	//clear information on html
 	$("#start").empty();
 	$("#solution").empty();
 	$("#validate").empty();
@@ -203,66 +205,63 @@ count: function()
 	$("#question").empty();
 	$("#buttons").hide();
 	$("#images").hide();
+	//add a start button to start
 	$("#start").append("<button class='click'>START</button>");
-
-	//click start button to begin
-	//zero out: index x, correct, incorrect, and noans
-	//clear out display
-	console.log("start fx");
 },
 
-
+//question function displays the class of object array
 question: function()
 {
+	//check if there is another index, if you are at the end 
+	//go to end() function
 	if(Trivia.x<Questions.length)
 	{
+		//hide the image
 		$("#images").hide();
+		//display the options
 		$("#buttons").show();
+		//clear out other displays
 		var result;
-	$("#validate").empty();
-	$("#solution").empty();
-	$("#start").empty();
-	$("#answer").empty();
-	console.log("inside question fx");
-	Trivia.timeout();
-	Trivia.reset();
-	Trivia.startTime();
-
-	var opt1=document.getElementById('opt1');
-	var opt2=document.getElementById('opt2');
-	var opt3=document.getElementById('opt3');
-
-	$("#question").html("<h3>"+Questions[Trivia.x].question+"</h3>");
-	$("#opt1").html(Questions[Trivia.x].option1);
-	$("#opt2").html(Questions[Trivia.x].option2);
-	$("#opt3").html(Questions[Trivia.x].option3);
-	//question fx
-
-	
-
+		$("#validate").empty();
+		$("#solution").empty();
+		$("#start").empty();
+		$("#answer").empty();
+		//stop, reset, then start the timer
+		Trivia.timeout();
+		Trivia.reset();
+		Trivia.startTime();
+		//set the options for each question
+		var opt1=document.getElementById('opt1');
+		var opt2=document.getElementById('opt2');
+		var opt3=document.getElementById('opt3');
+		//display the options
+		$("#question").html("<h3>"+Questions[Trivia.x].question+"</h3>");
+		$("#opt1").html(Questions[Trivia.x].option1);
+		$("#opt2").html(Questions[Trivia.x].option2);
+		$("#opt3").html(Questions[Trivia.x].option3);
 }
 else
 {
+	//if no more qustions go to the end() function
 	Trivia.end();
 }
 },
 
 //display function
+//displays the results
+//checks either if the answer is the correct, incorrect, or unanswered
+//answer, then displays the correct answer with associated image
 display: function()
 {
+	//hide the button
 	$("#buttons").hide();
-	console.log(Trivia.correct);
-	console.log(Trivia.incorrect);
-	console.log(Trivia.unanswered);
 	//if the index is less than the length of the solution
-
 	if(Trivia.x<Questions.length)
 	{
 		//check if the user still has time
 		if(Trivia.time<=0)
 		{
 			//if time ran out, display message and update unanswered counter
-			console.log("you ran out of time");
 			Trivia.unanswered++;
 		}
 		//stop timer
@@ -272,20 +271,15 @@ display: function()
 	$("#question").empty();
 	$("#answer").empty();
 	$("#start").empty();
-	console.log("display fx");
-
 	//display the solution
 	$("#answer").html("The ANSWER IS: "+Questions[Trivia.x].display);
-	
-	//console.log(Questions[Trivia.x].image);
+	//display image
 	$("#images").show();
 	$("#images").html("<img src='"+Questions[Trivia.x].image+"' class='img'>")
 	//show the solution for 2 seconds and go to the next question
 	//update the counter index
 	Trivia.x++;
 	setTimeout(Trivia.question,  1000*2);
-	
-	console.log("waiting on 1s");
 	}
 	else
 	{
@@ -293,10 +287,6 @@ display: function()
 		//run the end function to finish the game 
 		Trivia.end();
 	}
-
-	console.log(Trivia.correct);
-	console.log(Trivia.incorrect);
-	console.log(Trivia.unanswered);
 },
 
 //end function clears out the answer and solution, stops and resets the timer,
@@ -322,97 +312,66 @@ $("#images").hide();
 		+"<br>Unanswered: "+Trivia.unanswered+"<br><br>");
 	Trivia.isDone=true;
 	//button to start option
-	//Trivia.start();
 	$("#validate").append("<br><button class='click'>RESTART</button>");
-	//click startover button
-	console.log("end fx");
-	console.log("click on button to play again");
-
 },
-
-
-
 };
 
+//if the user clicks on the start button, then start the questions
 $("#start").on("click", function()
 	{
+		//clear out the start button
 		$("#start").empty();
-		
-		console.log("clicked start!");
+		//call the question() function
 		Trivia.question();
-
 	});
 
+//if the user clicks on the restart buttion
 $("#validate").on("click", function()
 	{
+		//clear out the restart button
 		$("#validate").empty();
-		
-		console.log("clicked start!");
-		//Trivia.isDone=false;
+		//check if all the questions are asked, 
+		//if not ask another question
 		if(Trivia.x<Questions.length)
 		{
 			Trivia.question();
 		}
+		//else go to the start option
 		else
 		{
+			//calling start() function
 			Trivia.start();
 		}
-		
-
 	});
 
+//if user click on option then check if the option matches the answer
 $(".options").on("click", function()
 	{
-		console.log("button!");
-		console.log("my val: "+ $(this).val());
 		result=parseInt(Questions[Trivia.x].answer);
-		console.log(result);
+		//if your answer matches 
 		if( ($(this).val())==(result))
 		{
-			console.log("youguessedright!");
 			$("#solution").html("You GUESSED correct!!");
 			//display correct ans
-			
 			//update correct counter
 			Trivia.correct++;
-			//update index x
-			//Trivia.x++;
+			//reset the time
 			Trivia.reset();
-			
 		}
+		//you picked the wrong ans
 		else 
 		{
 			//display not correct ans
 			$("#solution").html("You guessed WRONG :( !!");
 			//update incorrect counter
-		
 			Trivia.incorrect++;
-			//update index, x
-			//Trivia.x++;
+			//reset the timer
 			Trivia.reset();
 		}
+		//clear out the options
 		$(".options").empty();
+		//then call the display to show the results
 		Trivia.display();
-
 	});
-
-
-
+//calling the start function to start the game when page loads
 Trivia.start();
-//Trivia.display();
-//Trivia.end();
-//Trivia.question();
-
-
-console.log("length: "+Questions.length);
-console.log(Questions[0].option1);
-console.log(Questions[0].option2);
-console.log(Questions[0].option3);
-console.log(Questions[0].answer);
-
-console.log(Questions[1].question);
-console.log(Questions[1].option1);
-console.log(Questions[1].option2);
-console.log(Questions[1].option3);
-console.log(Questions[1].answer);
-
