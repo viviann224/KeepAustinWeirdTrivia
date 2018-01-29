@@ -1,9 +1,12 @@
-// jason.png mrntl.png rodeoaustin.png muller.png 
-// ut.png cosmic.png greenbelt.png oasis.png toms.png townlake.png
+//Vivian Nguyen
+//Assignment 5: Trivia Game
+
+
 //class Questions
 //the class contains the variables for the Trivia.question()
 // and Trivia.display() method
-//Questions contains an array of questions, options, answers, and a display
+//Questions contains an array of questions, options, answers, a display,
+//and images
 var Questions=[{
 	"question": "What is this major player at the Austin Farmer's Market?",
 	"option1": "Jason's Backyard Garden",
@@ -13,6 +16,7 @@ var Questions=[{
 	"display" :"Jason's Backyard Garden",
 	"image": "assets/images/jasons.png"
 },
+
 {
 	"question": "Which one was one of the first vegetarian resturant?",
 	"option1": "Taco Deli",
@@ -42,6 +46,7 @@ var Questions=[{
 	"display" :"Muller Park",
 	"image": "assets/images/muller.png"
 },
+
 {
 	"question": "What bleeds burnt orange?",
 	"option1": "The University of Texas at Austin",
@@ -101,24 +106,29 @@ var Questions=[{
 	"display" :"TOMS Roasting Co",
 	"image": "assets/images/toms.png"
 },
-
 ];
+
 //class trivia 
 var Trivia=
 {
-	triviaq: ["q1", "q2", "q3"],
-	answer: ["a1", "a2", "a3"],
-	solution: ["a1", "a2", "a3"],
+	//represents index 
 	x:0,
+	//counter for correct answer
 	correct:0,
+	//counter for incorrect answers
 	incorrect:0,
+	//counter for unanswered answers
 	unanswered:0,
+	//time in second for each question
 	time: 5,
+	//inverval which the counter counts 
 	intervalId:0,
+	//the state of the timer (currently off)
 	isNoTime:false,
+	//variable to determine if game is done
 	isDone:false,
 
-//start timer
+//start timer function
 //if timer is not running, lets start the timer.
 startTime: function()
 {
@@ -152,7 +162,8 @@ reset: function()
 //is the count down function for each question
 //if the user does not answer within 5seconds
 //the method accounts for unanswered unanswered questions
-//if out of time, displays user ran out of time, and goes to display() function
+//if out of time, displays user ran out of time, 
+//and goes to display() function
 count: function()
 {
 	//count down by decreasing time
@@ -170,6 +181,7 @@ count: function()
 },
 	
 //start fx
+//start function is the initial values
  start: function() 
  {
  	console.log("start fx");
