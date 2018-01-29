@@ -1,5 +1,9 @@
-
-//class question
+// jason.png mrntl.png rodeoaustin.png muller.png 
+// ut.png cosmic.png greenbelt.png oasis.png toms.png townlake.png
+//class Questions
+//the class contains the variables for the Trivia.question()
+// and Trivia.display() method
+//Questions contains an array of questions, options, answers, and a display
 var Questions=[{
 	"question": "Where is the \"I LOVE YOU SO MUCH\" mural located?",
 	"option1": "Joe's Coffee",

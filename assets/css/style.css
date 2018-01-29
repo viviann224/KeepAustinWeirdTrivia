@@ -36,18 +36,7 @@ button
 	margin:5px;
 }
 
-#opt1, #opt2, #opt3,
-{
-	background-color: white;
-	color: black;
-	margin:5px;
-    background-color: #a1a1a1;
-    color: black;
-    border: 2px solid gray;
 
-    margin:5px;
-
-}
 body 
 { 
 font-family: arial, times-new-roman;
@@ -89,6 +78,27 @@ h3
 	text-transform: uppercase;
 }
 
+hr
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 2px;
+
+	width:90%;
+}
+
+#opt1, #opt2, #opt3,
+{
+	background-color: white;
+	color: black;
+	margin:5px;
+    background-color: #a1a1a1;
+    color: black;
+    border: 2px solid gray;
+
+    margin:5px;
+}
+
 #time
 {
 	font-weight: bold;
@@ -126,14 +136,6 @@ h3
 	margin-top:0px;
 }
 
-hr
-{
-	margin-top: 0px;
-	margin-bottom: 0px;
-	padding-bottom: 2px;
-
-	width:90%;
-}
 
 #start
 {
