@@ -1,7 +1,7 @@
 
 //class question
 var Questions=[{
-	"question": "Where is the I LOVE YOU SO MUCH mural located?",
+	"question": "Where is the \"I LOVE YOU SO MUCH\" mural located?",
 	"option1": "Joe's Coffee",
 	"option2": "Home Slice",
 	"option3": "Whole Foods",
@@ -83,7 +83,7 @@ count: function()
 	//count down by decreasing time
 	Trivia.time--;
 	//display the time
-	$("#time").text(Trivia.time+1);
+	$("#time").text("Time left: "+(Trivia.time+1)+" sec");
 	//check if the user ran out of time
 	if(Trivia.time==0&& Trivia.x<Trivia.triviaq.length)
 	{
@@ -115,7 +115,7 @@ count: function()
 	$("#time").empty();
 	$("#question").empty();
 	$("#buttons").hide();
-	$("#start").append("<button>START</button>");
+	$("#start").append("<button class='click'>START</button>");
 
 	//click start button to begin
 	//zero out: index x, correct, incorrect, and noans
@@ -128,6 +128,7 @@ question: function()
 {
 	if(Trivia.x<Trivia.solution.length)
 	{
+
 		$("#buttons").show();
 		var result;
 	$("#validate").empty();
@@ -143,7 +144,7 @@ question: function()
 	var opt2=document.getElementById('opt2');
 	var opt3=document.getElementById('opt3');
 
-	$("#question").html(Questions[Trivia.x].question);
+	$("#question").html("<h3>"+Questions[Trivia.x].question+"</h3>");
 	$("#opt1").html(Questions[Trivia.x].option1);
 	$("#opt2").html(Questions[Trivia.x].option2);
 	$("#opt3").html(Questions[Trivia.x].option3);
@@ -224,12 +225,12 @@ end: function()
 	//display finish game msg
 	//and display correct, incorrect, unanswered
 	$("#validate").html("YOU ARE DONE PLAYING"+"<br>Correct: "
-		+Trivia.correct+"<br>Incorrect"+Trivia.incorrect
+		+Trivia.correct+"<br>Incorrect: "+Trivia.incorrect
 		+"<br>Unanswered: "+Trivia.unanswered);
 	Trivia.isDone=true;
 	//button to start option
 	//Trivia.start();
-	$("#validate").append("<br><button>[RESTART]</button>");
+	$("#validate").append("<br><button class='click'>RESTART</button>");
 	//click startover button
 	console.log("end fx");
 	console.log("click on button to play again");
@@ -289,7 +290,7 @@ $(".options").on("click", function()
 		else 
 		{
 			//display not correct ans
-			$("#solution").html("You WRONG :( !!");
+			$("#solution").html("You guessed WRONG :( !!");
 			//update incorrect counter
 		
 			Trivia.incorrect++;

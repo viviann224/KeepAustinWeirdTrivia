@@ -1,7 +1,51 @@
-button
+.click
 {
 	background-color: grey;
 	color: black;
+
+    background-color: #a1a1a1;
+    color: black;
+    border: 2px solid gray;
+    border-radius: 12px;
+    margin:5px;
+    padding:8px;
+
+}
+.click:hover 
+{
+	color:white;
+  box-shadow: inset 0 0 0 3px #7f7f7f;
+}
+
+.options
+{
+	width: 90%;
+	border: 0px solid gray;
+}
+
+.options:hover
+{
+	color:#006641;
+	text-shadow: 2px 2px 5px gray;
+	 box-shadow: inset 0 0 0 3px white;
+
+}
+button
+{
+	margin:5px;
+}
+
+#opt1, #opt2, #opt3,
+{
+	background-color: white;
+	color: black;
+	margin:5px;
+    background-color: #a1a1a1;
+    color: black;
+    border: 2px solid gray;
+
+    margin:5px;
+
 }
 body 
 { 
@@ -34,6 +78,15 @@ h2
 	font-family: 'Alegreya Sans', sans-serif;
 }
 
+h3
+{
+	letter-spacing: -1px;
+	text-shadow: 2px 2px 8px grey;
+	font-weight: bold;
+	font-family: 'Julius Sans One', sans-serif;
+	text-transform: uppercase;
+}
+
 #time
 {
 	font-weight: bold;
@@ -44,6 +97,7 @@ h2
 .container
 {
 	margin-top:10%;
+
 	background-color: white;
 	padding:20px;
 	padding-bottom: 2px;
@@ -56,12 +110,34 @@ h2
      border-radius: 25px;
 }
 
+#time
+{
+	margin-top:0px;
+}
+
+hr
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 2px;
+
+	width:90%;
+}
+
 #start
 {
 	font-weight: bold;
 	font-family: arial, sans-serif;
 	font-size: 12px;
 	letter-spacing: 2px;
+	margin:10px;
+}
+
+#validate
+{
+	font-size: 12px;
+	letter-spacing: 2px;
+	line-height: 1.6;
 }
 
 
@@ -70,9 +146,11 @@ h2
 {
 
 	margin-top:0px;
+	
 	padding-top: 0px;
-	color:black;
-	font-size: 9px;
+	color: #616161;
+    text-shadow: 2px 2px 4px #627588;
+	font-size: 12px;
 	text-align: right;
-	text-shadow: 2px 2px 8px #grey;
+
 }
