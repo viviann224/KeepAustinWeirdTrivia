@@ -224,9 +224,9 @@ end: function()
 	Trivia.reset();
 	//display finish game msg
 	//and display correct, incorrect, unanswered
-	$("#validate").html("YOU ARE DONE PLAYING"+"<br>Correct: "
+	$("#validate").html("<h3>YOU ARE DONE PLAYING</h3>"+"<br>Correct: "
 		+Trivia.correct+"<br>Incorrect: "+Trivia.incorrect
-		+"<br>Unanswered: "+Trivia.unanswered);
+		+"<br>Unanswered: "+Trivia.unanswered+"<br><br>");
 	Trivia.isDone=true;
 	//button to start option
 	//Trivia.start();
